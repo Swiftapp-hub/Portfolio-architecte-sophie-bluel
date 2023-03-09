@@ -18,14 +18,17 @@ document.addEventListener("DOMContentLoaded", function () {
 /*
  * Functions for gallery items
  */
-function refresh(isPopup, items, category = -1) {
+function refresh(isPopup, items = null, category = -1) {
     const rootEL = document.getElementById('gallery-list');
     while (rootEL.firstChild) rootEL.removeChild(rootEL.lastChild);
 
     if (!isPopup) {
         if (category === -1) {
-            galleryItem = [];
-            items.forEach((item) => addItemInGallery(item));
+            if (items === null) galleryItem.forEach((item) => addItemInGallery(item))
+            else {
+                galleryItem = [];
+                items.forEach((item) => addItemInGallery(item));
+            }
         } else {
             galleryItem.forEach((item) => {
                 if (item.categoryId === category) addItemInGallery(item, true);
