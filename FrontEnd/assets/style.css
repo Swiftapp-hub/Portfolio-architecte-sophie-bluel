@@ -3,6 +3,11 @@
    License: none (public domain)
 */
 
+/* Global css var */
+:root {
+    --primary-color: #1d6154;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -120,6 +125,35 @@ li:hover {
 #portfolio h2 {
     text-align: center;
     margin-bottom: 1em;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.categories input {
+    display: none;
+}
+
+.categories input + label {
+    display: inline-block;
+    box-sizing: border-box;
+    font-family: 'Syne', serif;
+    color: var(--primary-color);
+    padding: 9px 22px;
+    margin: 0 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 60px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.categories input:checked + label {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .gallery {
