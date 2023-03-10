@@ -1,0 +1,73 @@
+#introduction {
+    display: flex;
+    align-items: center;
+}
+
+#introduction figure {
+    flex: 1
+}
+
+#introduction img {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+#introduction article {
+    flex: 1
+}
+
+#introduction h2 {
+    margin-bottom: 1em;
+}
+
+#introduction p {
+    margin-bottom: 0.5em;
+}
+
+#portfolio h2 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.categories input {
+    display: none;
+}
+
+.categories input + label {
+    display: inline-block;
+    box-sizing: border-box;
+    font-family: 'Syne', serif;
+    color: var(--primary-color);
+    padding: 9px 22px;
+    margin: 0 5px;
+    border: 1px solid var(--primary-color);
+    border-radius: 60px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.categories input:checked + label {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.gallery {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+
+}

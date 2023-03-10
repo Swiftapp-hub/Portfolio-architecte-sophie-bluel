@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100vh;
+}
+
+nav a {
+    font-weight: 600;
+}
+
+form span {
+    color: #D65353;
+    align-self: center;
+    margin-top: 20px;
+    z-index: -1;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 0.3s ease-in-out;
+}
+
+form span.error {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+#forgot-password {
+    display: flex;
+    justify-content: center;
+}
+
+.form-ct a {
+    text-decoration: underline;
+}

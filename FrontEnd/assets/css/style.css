@@ -79,6 +79,11 @@ h2 {
     color: #1D6154
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 nav ul {
     display: flex;
     align-items: center;
@@ -89,119 +94,54 @@ nav ul {
 nav li {
     padding: 0 10px;
     font-size: 1.2em;
-}
-
-li:hover {
-    color: #B1663C;
-}
-
-#introduction {
-    display: flex;
-    align-items: center;
-}
-
-#introduction figure {
-    flex: 1
-}
-
-#introduction img {
-    display: block;
-    margin: auto;
-    width: 80%;
-}
-
-#introduction article {
-    flex: 1
-}
-
-#introduction h2 {
-    margin-bottom: 1em;
-}
-
-#introduction p {
-    margin-bottom: 0.5em;
-}
-
-#portfolio h2 {
-    text-align: center;
-    margin-bottom: 1em;
-}
-
-.categories {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
-.categories input {
-    display: none;
-}
-
-.categories input + label {
-    display: inline-block;
-    box-sizing: border-box;
-    font-family: 'Syne', serif;
-    color: var(--primary-color);
-    padding: 9px 22px;
-    margin: 0 5px;
-    border: 1px solid var(--primary-color);
-    border-radius: 60px;
-    text-align: center;
-    transition: all 0.3s;
     cursor: pointer;
 }
 
-.categories input:checked + label {
-    background-color: var(--primary-color);
-    color: white;
+nav span {
+    display: none;
 }
 
-.gallery {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+nav li:hover {
+    color: #B1663C;
 }
 
-.gallery img {
-    width: 100%;
-
+nav a:hover {
+    color: #B1663C;
 }
 
-#contact {
+.form-ct {
     width: 50%;
     margin: auto;
 }
 
-#contact > * {
+.form-ct > * {
     text-align: center;
 
 }
 
-#contact h2 {
+.form-ct h2 {
     margin-bottom: 20px;
 }
 
-#contact form {
+.form-ct form {
     text-align: left;
     margin-top: 30px;
     display: flex;
     flex-direction: column;
 }
 
-#contact input {
+.form-ct input {
     height: 50px;
     font-size: 1.2em;
     border: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-#contact label {
+.form-ct label {
     margin: 2em 0 1em 0;
 }
 
-#contact textarea {
+.form-ct textarea {
     border: none;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
 }
@@ -215,6 +155,7 @@ input[type="submit"] {
     width: 180px;
     text-align: center;
     border-radius: 60px;
+    cursor: pointer;
 }
 
 footer nav ul {
@@ -222,4 +163,3 @@ footer nav ul {
     justify-content: flex-end;
     margin: 2em
 }
-

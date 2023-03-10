@@ -7,22 +7,33 @@ const categories = [];
 /*
  * Events listener
  */
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
+    // Initialize portfolio section
     fetch("http://localhost:5678/api/works")
         .then((res) => res.json())
         .then((res) => {
             refresh(false, res);
         })
         .catch((error) => console.log(error));
+
+    // Check if user is logged in
+    if (localStorage.getItem("token")) {
+        document.querySelector('nav a').style.display = 'none';
+        const navSpan = document.querySelector('nav span');
+        navSpan.style.display = 'block';
+        navSpan.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            window.location.reload();
+        });
+    }
 });
 
 /*
  * Functions for gallery items
  */
 function refresh(isPopup, items = null, category = -1) {
-    // Delete item in gallery div
-    const rootEL = document.getElementById('gallery-list');
-    while (rootEL.firstChild) rootEL.removeChild(rootEL.lastChild);
+    // Delete items in gallery div
+    document.getElementById('gallery-list').textContent = "";
 
     if (!isPopup) {
         if (category === -1) {
