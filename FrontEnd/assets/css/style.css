@@ -43,6 +43,7 @@ table {
 body {
     max-width: 1140px;
     margin: auto;
+    padding: 0 20px;
     font-family: 'Work Sans', serif;
     font-size: 14px;
 }
@@ -51,6 +52,10 @@ header {
     display: flex;
     justify-content: space-between;
     margin: 50px 0
+}
+
+main {
+    padding: 0 50px;
 }
 
 section {

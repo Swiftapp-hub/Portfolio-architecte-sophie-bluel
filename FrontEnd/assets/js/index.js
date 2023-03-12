@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const navSpan = document.querySelector('nav span');
     navSpan.addEventListener('click', () => {
         localStorage.removeItem('token');
-        window.location.reload();
+        document.body.classList.remove('logged-in');
     });
 
     // Check if user is logged in and add class to body

@@ -13,6 +13,10 @@
     display: none;
 }
 
+.edit-banner span i {
+    margin-right: 10px;
+}
+
 .edit-banner button {
     font-size: 14px;
     background: white;
@@ -34,7 +38,6 @@
 
 #introduction img {
     display: block;
-    margin: auto;
     width: 80%;
 }
 
@@ -50,9 +53,16 @@
     margin-bottom: 0.5em;
 }
 
-#portfolio h2 {
-    text-align: center;
+#portfolio .portfolio-header {
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#portfolio .portfolio-header h2 {
+    text-align: center;
+    margin-right: 20px;
 }
 
 .categories {
@@ -97,12 +107,24 @@
 
 }
 
+.edit-button {
+    font-size: 14px;
+    background: transparent;
+    margin: 10px 0;
+    cursor: pointer;
+    display: none;
+}
+
+.edit-button i {
+    margin-right: 5px;
+}
+
 /* Style when logged in */
-body.logged-in nav span {
+body.logged-in nav span, body.logged-in .edit-button {
     display: block;
 }
 
-body.logged-in nav a {
+body.logged-in nav a, body.logged-in .categories {
     display: none;
 }
 
@@ -112,4 +134,8 @@ body.logged-in .edit-banner {
 
 body.logged-in header {
     margin-top: 80px;
+}
+
+body.logged-in #portfolio .portfolio-header {
+    margin-bottom: 3em;
 }
