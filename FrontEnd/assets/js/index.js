@@ -16,16 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch((error) => console.log(error));
 
-    // Check if user is logged in
-    if (localStorage.getItem("token")) {
-        document.querySelector('nav a').style.display = 'none';
-        const navSpan = document.querySelector('nav span');
-        navSpan.style.display = 'block';
-        navSpan.addEventListener('click', () => {
-            localStorage.removeItem('token');
-            window.location.reload();
-        });
-    }
+    // Add event listener to logout button
+    const navSpan = document.querySelector('nav span');
+    navSpan.addEventListener('click', () => {
+        localStorage.removeItem('token');
+        window.location.reload();
+    });
+
+    // Check if user is logged in and add class to body
+    if (localStorage.getItem("token")) document.body.classList.add('logged-in');
 });
 
 /*

@@ -1,3 +1,28 @@
+.edit-banner {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    display: none;
+}
+
+.edit-banner button {
+    font-size: 14px;
+    background: white;
+    height: fit-content;
+    padding: 10px 20px;
+    border-radius: 60px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
 #introduction {
     display: flex;
     align-items: center;
@@ -70,4 +95,21 @@
 .gallery img {
     width: 100%;
 
+}
+
+/* Style when logged in */
+body.logged-in nav span {
+    display: block;
+}
+
+body.logged-in nav a {
+    display: none;
+}
+
+body.logged-in .edit-banner {
+    display: flex;
+}
+
+body.logged-in header {
+    margin-top: 80px;
 }

@@ -9,6 +9,11 @@ nav a {
     font-weight: 600;
 }
 
+form input[type="submit"] {
+    padding: 10px 38px;
+    width: fit-content;
+}
+
 form span {
     color: #D65353;
     align-self: center;
