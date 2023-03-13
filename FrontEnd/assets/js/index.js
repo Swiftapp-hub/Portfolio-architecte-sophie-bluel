@@ -19,25 +19,40 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add event listener to logout button
     const navSpan = document.querySelector('nav span');
     navSpan.addEventListener('click', () => {
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         document.body.classList.remove('logged-in');
     });
 
-    // Add event listener to popup buttons
-    const editButton = document.querySelector('#portfolio .edit-button');
-    editButton.addEventListener('click', () => {
-        document.getElementById('edit-popup').classList.add('view-page-1');
-        refresh(true);
-    })
+    // Check if user is logged in
+    if (sessionStorage.getItem("token")) {
+        document.body.classList.add('logged-in');
 
-    const closeButton = document.querySelector('#edit-popup .fa-xmark');
-    closeButton.addEventListener('click', () => {
-        document.getElementById('edit-popup').classList.remove('view-page-1');
-        document.getElementById('edit-popup').classList.remove('view-page-2');
-    })
+        // Add event listener to popup buttons
+        const editButton = document.querySelector('#portfolio .edit-button');
+        editButton.addEventListener('click', () => {
+            document.getElementById('edit-popup').classList.add('view-page-1');
+            refresh(true);
+        })
 
-    // Check if user is logged in and add class to body
-    if (localStorage.getItem("token")) document.body.classList.add('logged-in');
+        const closeButton = document.querySelector('#edit-popup .fa-xmark');
+        closeButton.addEventListener('click', () => {
+            document.getElementById('edit-popup').classList.remove('view-page-1');
+            document.getElementById('edit-popup').classList.remove('view-page-2');
+            refresh(false);
+        })
+
+        const addButton = document.querySelector('#edit-popup .add');
+        addButton.addEventListener('click', () => {
+            document.getElementById('edit-popup').classList.remove('view-page-1');
+            document.getElementById('edit-popup').classList.add('view-page-2');
+        })
+
+        const backButton = document.querySelector('#edit-popup .fa-arrow-left');
+        backButton.addEventListener('click', () => {
+            document.getElementById('edit-popup').classList.remove('view-page-2');
+            document.getElementById('edit-popup').classList.add('view-page-1');
+        })
+    }
 });
 
 /*
@@ -56,7 +71,7 @@ function refresh(isPopup, items = null, category = -1) {
                 addCategory({id: -1, name: 'Tous'}, true);
                 items.forEach((item, index) => {
                     addItemInGallery(item);
-                    if (index < 3) addCategory(item.category);
+                    if (index < 3) addCategory(item.category); // Probleme a corriger
                 });
             }
         } else {
@@ -104,7 +119,21 @@ function addItemInGalleryPopup(item) {
     moveButton.classList.add('fa-solid', 'fa-arrows-up-down-left-right');
 
     deleteButton.addEventListener('click', () => {
-        console.log(item.id);
+        fetch("http://localhost:5678/api/works/" + item.id, {
+            method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + sessionStorage.getItem("token"),
+            }
+        }).then((response) => {
+            if (response.ok) {
+                galleryItem.forEach((i, index) => {
+                    if (item.id === i.id) galleryItem.splice(index, 1);
+                })
+                refresh(true);
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
     })
 
     moveButton.addEventListener('click', () => {

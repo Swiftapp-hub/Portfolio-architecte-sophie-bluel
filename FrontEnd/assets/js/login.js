@@ -16,9 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then((data) => {
             if (data.token === undefined) {
                 document.getElementById('login').querySelector('span').setAttribute('class', 'error');
-            }
-            else {
-                localStorage.setItem("token", data.token);
+            } else {
+                sessionStorage.setItem("token", data.token);
                 window.location.href = "index.html";
             }
         }).catch((error) => {

@@ -181,7 +181,6 @@
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     overflow-y: auto;
-    height: 46vh;
     max-height: 460px;
 }
 
@@ -222,6 +221,7 @@
     border-width: 1px;
     border-style: solid;
     width: 100%;
+    margin-top: 10px;
 }
 
 #edit-popup .page-1 .add {
