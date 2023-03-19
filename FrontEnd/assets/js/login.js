@@ -12,6 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 password: event.target.password.value,
             })
         }).then((response) => {
+            switch (response.status) {
+                case 401:
+                    console.log("Erreur, veuillez verifier vos identifiants");
+                    break;
+                case 404:
+                    console.log("Erreur, veuillez verifier vos identifiants");
+                    break;
+                case 500:
+                    alert("Erreur du serveur");
+                    break;
+                case 503:
+                    alert("Erreur, service non disponible");
+                    break;
+            }
             return response.json();
         }).then((data) => {
             if (data.token === undefined) {

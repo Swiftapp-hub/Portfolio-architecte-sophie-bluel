@@ -81,7 +81,7 @@ h2 {
     font-family: 'Syne', serif;
     font-weight: 700;
     font-size: 30px;
-    color: #1D6154
+    color: var(--primary-color);
 }
 
 a {
@@ -135,7 +135,7 @@ nav a:hover {
     flex-direction: column;
 }
 
-.form-ct input {
+.form-ct input, .form-ct select {
     height: 50px;
     font-size: 1.2em;
     border: none;
@@ -151,11 +151,11 @@ nav a:hover {
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"], .add {
+input[type="submit"], .add, .add-image {
     font-family: 'Syne', serif;
     font-weight: 700;
     color: white;
-    background-color: #1D6154;
+    background-color: var(--primary-color);
     margin: 2em auto;
     width: 180px;
     text-align: center;

@@ -158,7 +158,7 @@
     pointer-events: none;
 }
 
-#edit-popup .page-1 {
+#edit-popup .page-1, #edit-popup .page-2 {
     display: none;
     padding: 0 50px;
     box-sizing: border-box;
@@ -167,7 +167,7 @@
     align-items: center;
 }
 
-#edit-popup .page-1 h2 {
+#edit-popup h2 {
     margin-bottom: 30px;
     font-family: 'Work Sans', serif;
     color: black;
@@ -217,7 +217,7 @@
 }
 
 #edit-popup hr {
-    border-color: gray transparent transparent transparent;
+    border-color: #B9C5CC transparent transparent transparent;
     border-width: 1px;
     border-style: solid;
     width: 100%;
@@ -237,6 +237,75 @@
 }
 
 #edit-popup .page-2 {
+    display: none;
+}
+
+#edit-popup .page-2 form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
+
+#edit-popup .page-2 form > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #E8F1F7;
+    width: 100%;
+    height: 20vh;
+    justify-content: space-around;
+    border-radius: 3px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#edit-popup .page-2 form .view-file * {
+    display: none;
+}
+
+#edit-popup .page-2 form > div div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#edit-popup .page-2 input[type="file"] {
+    display: none;
+}
+
+#edit-popup .page-2 div i {
+    font-size: 5em;
+    color: #B9C5CC;
+}
+
+#edit-popup form div .add-image {
+    background-color: #CBD6DC;
+    color: #306685;
+    margin: 10px 0;
+    font-family: 'Work Sans', serif;
+}
+
+#edit-popup form div div span {
+    font-size: 10px;
+}
+
+#edit-popup .add-image {
+    padding: 10px 20px;
+}
+
+#edit-popup form input, #category-edit {
+    width: 100%;
+    text-align: start;
+}
+
+#category-edit {
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+#reset {
     display: none;
 }
 

@@ -104,7 +104,26 @@
         </div>
 
         <div class="page-2">
+            <h2>Ajout photo</h2>
 
+            <form action="" class="form-ct" id="post-work">
+                <div>
+                    <i class="fa-solid fa-image"></i>
+                    <input accept="image/png, image/jpeg" id="file" name="file" type="file">
+                    <div>
+                        <button class="add-image" type="button">+ Ajouter photo</button>
+                        <span>jpg, png : 4mo max</span>
+                    </div>
+                </div>
+                <label for="title-edit">Titre</label>
+                <input id="title-edit" name="title-edit" type="text">
+                <label for="category-edit">Catégorie</label>
+                <select id="category-edit">
+                </select>
+                <hr>
+                <button class="add-image" type="submit">Valider</button>
+                <input id="reset" type="reset">
+            </form>
         </div>
     </div>
 </div>
