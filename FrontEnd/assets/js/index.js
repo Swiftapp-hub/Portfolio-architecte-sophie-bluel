@@ -43,46 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    // Add image event listener
-    const addImage = document.querySelector('#edit-popup form div div .add-image');
-    const inputFile = document.getElementById('file');
-    const ct = document.querySelector('#edit-popup form > div')
-    addImage.addEventListener('click', () => {
-        inputFile.click();
-    })
-    inputFile.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        ct.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
-        ct.classList.add('view-file');
-    })
-
-    const btnSubmit = document.querySelector('#edit-popup form > button');
-    btnSubmit.addEventListener('click', (e) => {
-        e.preventDefault();
-        var formData = new FormData();
-
-        formData.append('image', document.getElementById('file').files[0]);
-        formData.append('title', document.getElementById('title-edit').value);
-        formData.append('category', document.getElementById('category-edit').value);
-
-        fetch("http://localhost:5678/api/works", {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer " + sessionStorage.getItem("token"),
-            },
-            body: formData
-        }).then((response) => {
-            return response.json();
-        }).then((data) => {
-            galleryItem.push(data);
-            galleryItem.at(galleryItem.length - 1).categoryId = parseInt(data.categoryId, 10);
-            refreshWorks(false);
-            closePopup();
-        }).catch((error) => {
-            console.log(error);
-        })
-    })
-
     // Check if user is logged in
     if (sessionStorage.getItem("token")) {
         document.body.classList.add('logged-in');
@@ -111,6 +71,69 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('reset').click();
             ct.style.backgroundImage = "none";
             ct.classList.remove('view-file');
+        })
+
+        // Add image event listener
+        const addImage = document.querySelector('#edit-popup form div div .add-image');
+        const inputFile = document.getElementById('file');
+        const ct = document.querySelector('#edit-popup form > div')
+        addImage.addEventListener('click', () => {
+            inputFile.click();
+        })
+        inputFile.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            ct.style.backgroundImage = `url(${URL.createObjectURL(file)})`;
+            ct.classList.add('view-file');
+
+            checkIsOkForPost();
+        })
+
+        const btnSubmit = document.querySelector('#edit-popup form > button');
+        btnSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
+            var formData = new FormData();
+
+            formData.append('image', document.getElementById('file').files[0]);
+            formData.append('title', document.getElementById('title-edit').value);
+            formData.append('category', document.getElementById('category-edit').value);
+
+            fetch("http://localhost:5678/api/works", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + sessionStorage.getItem("token"),
+                },
+                body: formData
+            }).then((response) => {
+                switch (response.status) {
+                    case 400:
+                        console.log("Erreur de requête");
+                        break;
+                    case 401:
+                        console.log("Vous n'êtes pas autorisé à accéder à cette page");
+                        break;
+                    case 500:
+                        alert("Erreur serveur");
+                        break;
+
+                    default:
+                        return response.json();
+                }
+            }).then((data) => {
+                if (data !== undefined) {
+                    galleryItem.push(data);
+                    galleryItem.at(galleryItem.length - 1).categoryId = parseInt(data.categoryId, 10);
+                    refreshWorks(false);
+                    closePopup();
+                }
+            }).catch((error) => {
+                console.log(error);
+            })
+        })
+
+        // Check when text is edited in #title-edit
+        const titleEdit = document.getElementById('title-edit');
+        titleEdit.addEventListener('input', (e) => {
+            checkIsOkForPost();
         })
     }
 });
@@ -226,6 +249,14 @@ function closePopup() {
     const ct = document.querySelector('#edit-popup form > div')
     ct.style.backgroundImage = "none";
     ct.classList.remove('view-file');
+}
+
+function checkIsOkForPost() {
+    if (document.getElementById('title-edit').value !== "" && document.getElementById('file').files[0] !== undefined) {
+        document.querySelector('#edit-popup form > button').classList.add('ok');
+    } else {
+        document.querySelector('#edit-popup form > button').classList.remove('ok');
+    }
 }
 
 /*

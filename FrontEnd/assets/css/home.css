@@ -285,6 +285,7 @@
     color: #306685;
     margin: 10px 0;
     font-family: 'Work Sans', serif;
+    pointer-events: auto;
 }
 
 #edit-popup form div div span {
@@ -293,6 +294,13 @@
 
 #edit-popup .add-image {
     padding: 10px 20px;
+    background: #A7A7A7;
+    pointer-events: none;
+}
+
+#edit-popup .add-image.ok {
+    background: var(--primary-color);
+    pointer-events: auto;
 }
 
 #edit-popup form input, #category-edit {
