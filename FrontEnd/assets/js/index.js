@@ -28,24 +28,24 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch((error) => console.log(error));
 
-    // Add event listener to logout button
-    const navSpan = document.querySelector('nav span');
-    navSpan.addEventListener('click', () => {
-        sessionStorage.removeItem('token');
-        document.body.classList.remove('logged-in');
-    });
-
-    // Close popup when clicking outside
-    const popup = document.querySelector('#edit-popup');
-    popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-            closePopup();
-        }
-    })
-
     // Check if user is logged in
     if (sessionStorage.getItem("token")) {
         document.body.classList.add('logged-in');
+
+        // Add event listener to logout button
+        const navSpan = document.querySelector('nav span');
+        navSpan.addEventListener('click', () => {
+            sessionStorage.removeItem('token');
+            document.body.classList.remove('logged-in');
+        });
+
+        // Close popup when clicking outside
+        const popup = document.querySelector('#edit-popup');
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                closePopup();
+            }
+        })
 
         // Add event listener to popup buttons
         const editButton = document.querySelector('#portfolio .edit-button');
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Check when text is edited in #title-edit
         const titleEdit = document.getElementById('title-edit');
-        titleEdit.addEventListener('input', (e) => {
+        titleEdit.addEventListener('input', () => {
             checkIsOkForPost();
         })
     }
